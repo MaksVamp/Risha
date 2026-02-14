@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для Ариши 💖</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ff9acb, #ff5fa2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start {
+    text-align: center;
+    color: white;
+}
+
+#start h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#start button {
+    background: #ff2f92;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
+
+#start button:hover {
+    transform: scale(1.05);
+}
+
+#screen {
+    display: none;
+    width: 90%;
+    height: 90%;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 20px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+}
+
+.heart {
+    position: fixed;
+    color: rgba(255,0,100,.6);
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) scale(1); opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="start">
+    <h1>Для Ариши 💖</h1>
+    <button onclick="start()">Нажми сюда</button>
+</div>
+
+<div id="screen"></div>
+
+<script>
+const screen = document.getElementById("screen");
+const startDiv = document.getElementById("start");
+
+function sleep(ms) {
+    return new Promise(r => setTimeout(r, ms));
+}
+
+async function typeText(text) {
+    for (let c of text) {
+        screen.innerHTML += c;
+        await sleep(40);
+    }
+    screen.innerHTML += "<br>";
+    screen.scrollTop = screen.scrollHeight;
+}
+
+function frame() {
+screen.innerHTML +=
+`****************************************************
+*                                                  *
+*               С 14 ФЕВРАЛЯ ❤️                    *
+*                                                  *
+****************************************************
+
+`;
+}
+
+async function hearts() {
+    setInterval(() => {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerText = "❤";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.fontSize = 16 + Math.random() * 24 + "px";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 6000);
+    }, 300);
+}
+
+async function start() {
+    startDiv.style.display = "none";
+    screen.style.display = "block";
+
+    hearts();
+
+    frame();
+    await typeText("💖 С Днём Святого Валентина, Ариша! 💖");
+    await typeText("");
+    await typeText("Ты — самое прекрасное, что есть в моей жизни.");
+    await typeText("Я рад, что Никита познакомил нас.");
+    await typeText("С 14 февраля, Риш. Очень тебя люблю.");
+    await typeText("Люблю, что ты весёлая, добрая и позитивная.");
+    await typeText("Хочу, чтобы ты улыбалась чаще и не грустила.");
+    await typeText("Я люблю тебя ❤️");
+    await typeText("Я рад, что мы познакомились и поддерживаем общение, несмотря на ссоры.");
+    await typeText("Ты очень милая, добрая и хорошая девушка.");
+    await typeText("Ты поднимаешь настроение, когда его нет, и делаешь его ещё лучше, когда оно есть.");
+    await typeText("Люблю тебя, Риш ❤️");
+
+    await sleep(1200);
+    await typeText("💌 Ариша, ты мой мир 💌");
+}
+</script>
+
+</body>
+</html>
