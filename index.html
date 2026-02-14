@@ -2,45 +2,45 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Ариша ❤️</title>
+    <title>Ариша</title>
     <style>
         body {
-            background: #0f0f0f;
+            background: #000;
             color: #fff;
-            font-family: monospace;
-            padding: 30px;
-            white-space: pre-wrap;
+            font-family: "Courier New", monospace;
+            font-size: 16px;
+            padding: 20px;
+            white-space: pre;
         }
         .heart {
             color: red;
-            line-height: 1;
         }
     </style>
 </head>
 <body>
 
-<div id="output"></div>
+<div id="out"></div>
 
 <script>
-const output = document.getElementById("output");
+const out = document.getElementById("out");
 
 function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(r => setTimeout(r, ms));
 }
 
 async function typeText(text) {
     for (let c of text) {
-        output.innerHTML += c;
+        out.textContent += c;
         await sleep(40);
     }
-    output.innerHTML += "<br>";
+    out.textContent += "\n";
 }
 
 function printFrame() {
-    output.innerHTML +=
+    out.textContent +=
 `****************************************************
 *                                                  *
-*               C 14 ФЕВРАЛЯ ❤️                    *
+*               C 14 ФЕВРАЛЯ  ❤️                   *
 *                                                  *
 ****************************************************
 
@@ -51,14 +51,14 @@ async function printHeart() {
     for (let y = 1.5; y > -1.5; y -= 0.1) {
         let line = "";
         for (let x = -1.5; x < 1.5; x += 0.05) {
-            let f = Math.pow(x, 2) + Math.pow(y, 2) - 1;
-            if (Math.pow(f, 3) - Math.pow(x, 2) * Math.pow(y, 3) <= 0) {
+            let f = x*x + y*y - 1;
+            if (f*f*f - x*x*y*y*y <= 0) {
                 line += "❤";
             } else {
                 line += " ";
             }
         }
-        output.innerHTML += `<span class="heart">${line}</span><br>`;
+        out.textContent += line + "\n";
         await sleep(20);
     }
 }
@@ -71,12 +71,12 @@ async function main() {
     await typeText("");
     await typeText("Ты — самое прекрасное, что есть в моей жизни.");
     await typeText("Я рад что Никита познакомил нас");
-    await typeText("с 14 февраля риш, очень тебя люблю, люблю что веселая добрая и позитивная хотелось что бы ты улыбалась чаще и не грустила");
-    await typeText("я люблю тебя ❤️");
+    await typeText("с 14 февраля риш,очень тебя люблю,люблю что веселая добрая и позитивная хотелось что бы ты улыбалась чаще и не грустила");
+    await typeText("я люблю тебя❤️");
     await typeText("я рад что мы с тобой познакомились и поддерживаем общение не смотря на ссоры");
     await typeText("ты очень милая добрая и хорошая девушка");
     await typeText("ты поднимаешь настроение когда его нет и оставляешь его хорошим когда оно есть");
-    await typeText("люблю тебя риш ❤️");
+    await typeText("люблю тебя риш❤️");
 
     await sleep(1500);
     await printHeart();
