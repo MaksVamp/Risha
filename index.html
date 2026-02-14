@@ -2,16 +2,53 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Ариша</title>
+    <title>Ариша 💖</title>
     <style>
         body {
-            background: #000;
-            color: #fff;
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9acb, #ff5fa2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: "Courier New", monospace;
-            font-size: 16px;
-            padding: 20px;
-            white-space: pre;
         }
+
+        #startScreen {
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #ff2f92;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff1f82;
+        }
+
+        #console {
+            display: none;
+            width: 90%;
+            height: 90%;
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            overflow-y: auto;
+            white-space: pre;
+            border-radius: 20px;
+        }
+
         .heart {
             color: red;
         }
@@ -19,10 +56,16 @@
 </head>
 <body>
 
-<div id="out"></div>
+<div id="startScreen">
+    <h1>Для Ариши 💖</h1>
+    <button onclick="start()">Нажми сюда</button>
+</div>
+
+<div id="console"></div>
 
 <script>
-const out = document.getElementById("out");
+const consoleBox = document.getElementById("console");
+const startScreen = document.getElementById("startScreen");
 
 function sleep(ms) {
     return new Promise(r => setTimeout(r, ms));
@@ -30,14 +73,14 @@ function sleep(ms) {
 
 async function typeText(text) {
     for (let c of text) {
-        out.textContent += c;
+        consoleBox.textContent += c;
         await sleep(40);
     }
-    out.textContent += "\n";
+    consoleBox.textContent += "\n";
 }
 
 function printFrame() {
-    out.textContent +=
+    consoleBox.textContent +=
 `****************************************************
 *                                                  *
 *               C 14 ФЕВРАЛЯ  ❤️                   *
@@ -58,12 +101,15 @@ async function printHeart() {
                 line += " ";
             }
         }
-        out.textContent += line + "\n";
+        consoleBox.textContent += line + "\n";
         await sleep(20);
     }
 }
 
-async function main() {
+async function start() {
+    startScreen.style.display = "none";
+    consoleBox.style.display = "block";
+
     const name = "Ариша";
 
     printFrame();
@@ -84,8 +130,6 @@ async function main() {
     await sleep(1000);
     await typeText("💌 Ариша, ты мой мир 💌");
 }
-
-main();
 </script>
 
 </body>
